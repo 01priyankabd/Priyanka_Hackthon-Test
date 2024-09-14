@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    
+    <label for="temp">Enter Temperature:</label>
+    <input type="num" id="temp" placeholder="Enter temperature :" />
+
+    <label for="conversionType">Select Conversion Type:</label>
+    <select id="conversionType">
+        <option value="cToF">Celsius to Fahrenheit</option>
+        <option value="fToC">Fahrenheit to Celsius</option>
+    </select>
+
+    <button onclick="convertTemperature()">convert</button>
+    <h2 id="result"></h2>
+
+    <script>
+        function convertTemperature() {
+            const tempInput = document.getElementById('temp').value;
+            const conversionType = document.getElementById('conversionType').value;
+        
+            let result;
+        
+            if (conversionType === 'cToF') {
+                result = (tempInput * 9/5) + 32;
+                result = result.toFixed(2); 
+                document.getElementById('result').innerText = `${tempInput}C is ${result}F`;
+            } else if (conversionType === 'fToC') {
+                result = (tempInput - 32) * 5/9;
+                result = result.toFixed(2); 
+                document.getElementById('result').innerText = `${tempInput}F is ${result}C`;
+            } else {
+                document.getElementById('result').innerText = 'Select a conversion type.';
+            }
+        }
+
+    </script>
+</body>
+</html>
